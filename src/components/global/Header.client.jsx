@@ -8,6 +8,7 @@ import {
   IconMenu,
   IconSearch,
   Input,
+  Logo
 } from '~/components';
 
 import {CartDrawer} from './CartDrawer.client';
@@ -23,7 +24,7 @@ export function Header({title, menu}) {
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
 
-  const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
+  const isHome =true//pathname === `/${countryCode ? countryCode + '/' : ''}`;
 
   const {
     isOpen: isCartOpen,
@@ -126,30 +127,27 @@ function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
   const {y} = useWindowScroll();
 
   const styles = {
-    button:
-      'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
-    container: `${
-      isHome
-        ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-        : 'bg-contrast/80 text-primary'
-    } ${
-      y > 50 && !isHome ? 'shadow-lightHeader ' : ''
-    }hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8`,
+    button:'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
+    container: 'bg-contrast text-primary hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8'
   };
 
+  
   return (
+  <>
+  
     <header role="banner" className={styles.container}>
-      <div className="flex gap-12">
-        <Link className={`font-bold`} to="/">
+       <Link className={`font-bold`} to="/">
           {title}
-        </Link>
-        <nav className="flex gap-8">
+         </Link>
+  <div className="flex gap-12">
+       <nav className="flex gap-8">
           {/* Top level menu items */}
           {(menu?.items || []).map((item) => (
             <Link key={item.id} to={item.to} target={item.target}>
               {item.title}
             </Link>
           ))}
+
         </nav>
       </div>
       <div className="flex items-center gap-1">
@@ -179,8 +177,16 @@ function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
           <IconBag />
           <CartBadge dark={isHome} />
         </button>
+       
       </div>
-    </header>
+ </header>
+ <div className = "height-50 flex justify-between bg-red-400">
+  <div className = "flex">
+     Shop By Categories
+    </div>
+  <div className = "flex"></div>
+ </div>
+    </>
   );
 }
 

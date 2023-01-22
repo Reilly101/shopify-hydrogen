@@ -20,6 +20,7 @@ import {
   ProductGallery,
   Section,
   Text,
+Tabtext
 } from '~/components';
 
 export default function Product() {
@@ -44,7 +45,7 @@ export default function Product() {
   if (!product) {
     return <NotFound type="product" />;
   }
-
+console.log(product)
   const {media, title, vendor, descriptionHtml, id, productType} = product;
   const {shippingPolicy, refundPolicy} = shop;
   const {
@@ -98,12 +99,16 @@ export default function Product() {
                 </div>
                 <ProductForm />
                 <div className="grid gap-4 py-4">
-                  {descriptionHtml && (
+                  <Tabtext
+                  description= {descriptionHtml}
+                  
+                  />
+                  {/* {descriptionHtml && (
                     <ProductDetail
-                      title="Product Details"
+                      title="product "
                       content={descriptionHtml}
                     />
-                  )}
+                  )} */}
                   {shippingPolicy?.body && (
                     <ProductDetail
                       title="Shipping"

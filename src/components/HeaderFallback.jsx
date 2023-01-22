@@ -13,7 +13,7 @@ export function HeaderFallback({isHome}) {
         <Box isHome={isHome} />
         <Box isHome={isHome} />
         <Box isHome={isHome} />
-      </div>
+    </div>
       <Box isHome={isHome} wide={true} />
     </header>
   );

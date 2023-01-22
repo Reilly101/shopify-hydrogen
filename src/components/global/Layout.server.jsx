@@ -1,7 +1,7 @@
 import {Suspense} from 'react';
 import {useLocalization, useShopQuery, CacheLong, gql} from '@shopify/hydrogen';
 
-import {Header} from '~/components';
+import {Header, Logo} from '~/components';
 import {Footer} from '~/components/index.server';
 import {parseMenu} from '~/lib/utils';
 
@@ -37,8 +37,74 @@ export function Layout({children}) {
 }
 
 function HeaderWithMenu() {
-  const {shopName, headerMenu} = useLayoutQuery();
-  return <Header title={shopName} menu={headerMenu} />;
+  const {shopName} = useLayoutQuery();
+  let headerMenu = {
+    "id": "gid://shopify/Menu/180186611768",
+    "items": [
+      {
+        "id": "Home",
+        "resourceId": null,
+        "tags": [],
+        "title": "Home",
+        "type": "",
+        "url": "",
+        "items": [],
+        "isExternal": false,
+        "target": "_self",
+        "to": "/"
+    },
+        
+        {
+            "id": "gid://shopify/MenuItem/413612507192",
+            "resourceId": null,
+            "tags": [],
+            "title": "Shop",
+            "type": "CATALOG",
+            "url": "https://hydrogen-preview.myshopify.com/collections/all",
+            "items": [],
+            "isExternal": false,
+            "target": "_self",
+            "to": "/products"
+        },
+        {
+            "id": "gid://shopify/MenuItem/430541078584",
+            "resourceId": "gid://shopify/Blog/83557253176",
+            "tags": [],
+            "title": "About",
+            "type": "BLOG",
+            "url": "https://hydrogen-preview.myshopify.com/blogs/journal",
+            "items": [],
+            "isExternal": false,
+            "target": "_self",
+            "to": "/journal"
+        },
+        {
+          "id": "gid://shopify/MenuItem/413612474424",
+          "resourceId": null,
+          "tags": [],
+          "title": "Blog",
+          "type": "COLLECTIONS",
+          "url": "https://hydrogen-preview.myshopify.com/collections",
+          "items": [],
+          "isExternal": false,
+          "target": "_self",
+          "to": "/collections"
+      },
+      {
+        "id": "gid://shopify/MenuItem/413612474424",
+        "resourceId": null,
+        "tags": [],
+        "title": "Contact",
+        "type": "COLLECTIONS",
+        "url": "https://hydrogen-preview.myshopify.com/collections",
+        "items": [],
+        "isExternal": false,
+        "target": "_self",
+        "to": "/contact"
+    }
+    ]
+}
+  return <Header title={<Logo/>} menu={headerMenu} />;
 }
 
 function FooterWithMenu() {
