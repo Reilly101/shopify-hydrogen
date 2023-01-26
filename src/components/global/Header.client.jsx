@@ -1,5 +1,5 @@
-import {Link, useUrl, useCart} from '@shopify/hydrogen';
-import {useWindowScroll} from 'react-use';
+import { Link, useUrl, useCart } from '@shopify/hydrogen';
+import { useWindowScroll } from 'react-use';
 
 import {
   Heading,
@@ -8,23 +8,23 @@ import {
   IconMenu,
   IconSearch,
   Input,
-  Logo
+  Logo,
 } from '~/components';
 
-import {CartDrawer} from './CartDrawer.client';
-import {MenuDrawer} from './MenuDrawer.client';
-import {useDrawer} from './Drawer.client';
+import { CartDrawer } from './CartDrawer.client';
+import { MenuDrawer } from './MenuDrawer.client';
+import { useDrawer } from './Drawer.client';
 
 /**
  * A client component that specifies the content of the header on the website
  */
-export function Header({title, menu}) {
-  const {pathname} = useUrl();
+export function Header({ title, menu }) {
+  const { pathname } = useUrl();
 
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
 
-  const isHome =true//pathname === `/${countryCode ? countryCode + '/' : ''}`;
+  const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
 
   const {
     isOpen: isCartOpen,
@@ -60,8 +60,22 @@ export function Header({title, menu}) {
   );
 }
 
-function MobileHeader({countryCode, title, isHome, openCart, openMenu}) {
-  const {y} = useWindowScroll();
+function NavigationLink({ menu, children }) {
+  return (
+    <nav className="flex gap-8">
+      {/* Top level menu items */}
+      {children}
+      {(menu?.items || []).map((item) => (
+        <Link key={item.id} to={item.to} target={item.target}>
+          {item.title}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+
+function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
+  const { y } = useWindowScroll();
 
   const styles = {
     button: 'relative flex items-center justify-center w-8 h-8',
@@ -123,75 +137,67 @@ function MobileHeader({countryCode, title, isHome, openCart, openMenu}) {
   );
 }
 
-function DesktopHeader({countryCode, isHome, menu, openCart, title}) {
-  const {y} = useWindowScroll();
+function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
+  const { y } = useWindowScroll();
 
   const styles = {
-    button:'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
-    container: 'bg-contrast text-primary hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8'
+    button:
+      'relative flex items-center justify-center w-8 h-8 focus:ring-primary/5',
+    container:
+      'bg-contrast text-primary hidden h-nav lg:flex items-center sticky transition duration-300 backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-8 px-12 py-8',
   };
 
-  
   return (
-  <>
-  
-    <header role="banner" className={styles.container}>
-       <Link className={`font-bold`} to="/">
+    <>
+      <header role="banner" className={styles.container}>
+        <Link className={`font-bold`} to="/">
           {title}
-         </Link>
-  <div className="flex gap-12">
-       <nav className="flex gap-8">
-          {/* Top level menu items */}
-          {(menu?.items || []).map((item) => (
-            <Link key={item.id} to={item.to} target={item.target}>
-              {item.title}
-            </Link>
-          ))}
-
-        </nav>
-      </div>
-      <div className="flex items-center gap-1">
-        <form
-          action={`/${countryCode ? countryCode + '/' : ''}search`}
-          className="flex items-center gap-2"
-        >
-          <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
-            }
-            type="search"
-            variant="minisearch"
-            placeholder="Search"
-            name="q"
-          />
-          <button type="submit" className={styles.button}>
-            <IconSearch />
-          </button>
-        </form>
-        <Link to={'/account'} className={styles.button}>
-          <IconAccount />
         </Link>
-        <button onClick={openCart} className={styles.button}>
-          <IconBag />
-          <CartBadge dark={isHome} />
-        </button>
-       
+        {isHome && <NavigationLink menu={menu} />}
+
+        <div className="flex items-center gap-1">
+          <form
+            action={`/${countryCode ? countryCode + '/' : ''}search`}
+            className="flex items-center gap-2"
+          >
+            <Input
+              className={
+                isHome
+                  ? 'focus:border-contrast/20 dark:focus:border-primary/20'
+                  : 'focus:border-primary/20'
+              }
+              type="search"
+              variant="minisearch"
+              placeholder="Search"
+              name="q"
+            />
+            <button type="submit" className={styles.button}>
+              <IconSearch />
+            </button>
+          </form>
+          <Link to={'/account'} className={styles.button}>
+            <IconAccount />
+          </Link>
+          <button onClick={openCart} className={styles.button}>
+            <IconBag />
+            <CartBadge dark={isHome} />
+          </button>
+        </div>
+      </header>
+      <div className="height-50 flex header_background items-center">
+        {!isHome && (
+          <NavigationLink menu={menu}>
+            <div className="margin-left-150">Shop By Departments</div>
+          </NavigationLink>
+        )}
+        <div className="flex"></div>
       </div>
- </header>
- <div className = "height-50 flex justify-between bg-red-400">
-  <div className = "flex">
-     Shop By Categories
-    </div>
-  <div className = "flex"></div>
- </div>
     </>
   );
 }
 
-function CartBadge({dark}) {
-  const {totalQuantity} = useCart();
+function CartBadge({ dark }) {
+  const { totalQuantity } = useCart();
 
   if (totalQuantity < 1) {
     return null;

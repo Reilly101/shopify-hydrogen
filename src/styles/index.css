@@ -17,6 +17,8 @@
   --height-nav: 3rem;
   --screen-height: 100vh;
   --screen-height-dynamic: 100vh;
+  --header-background: #99412b;
+  --header-bgonhover: #f96030;
 
   @media (min-width: 32em) {
     --height-nav: 4rem;
@@ -178,6 +180,21 @@ shop-pay-button {
 }
 
 .height-50 {
-height: 50px;
+  height: 50px;
+}
 
+.margin-left-150 {
+  margin-left: 150px;
+}
+
+.header_background {
+  background-color: var(--header-background);
+}
+.header_background > * > *:hover,
+.active_header_bg {
+  background-color: var(--header-bgonhover);
+}
+.header_background > * > * {
+  padding-left: 10px;
+  height: 50px;
 }
