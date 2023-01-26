@@ -122,7 +122,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
     </header>
   );
 }
-function HeaderLinks() {
+function HeaderLinks({ menu }) {
   return (
     <nav className="flex gap-8 header_background">
       {(menu?.items || []).map((item) => (
@@ -150,7 +150,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
-        {isHome && <HeaderLinks />}
+        {isHome && <HeaderLinks menu={menu} />}
         <div className="flex items-center gap-1">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
