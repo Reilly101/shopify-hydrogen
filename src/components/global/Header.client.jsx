@@ -182,7 +182,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
       </header>
       <div className="height-50 flex justify-between bg-red-400">
         <div className="flex">Shop By Categories</div>
-        <div className="flex"></div>
+        {!isHome && <HeaderLinks />}
       </div>
     </>
   );
