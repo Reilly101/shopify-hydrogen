@@ -24,7 +24,7 @@ export function Header({ title, menu }) {
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
 
-  const isHome = true; //pathname === `/${countryCode ? countryCode + '/' : ''}`;
+  const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
 
   const {
     isOpen: isCartOpen,
@@ -122,6 +122,17 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
     </header>
   );
 }
+function HeaderLinks() {
+  return (
+    <nav className="flex gap-8 header_background">
+      {(menu?.items || []).map((item) => (
+        <Link key={item.id} to={item.to} target={item.target}>
+          {item.title}
+        </Link>
+      ))}
+    </nav>
+  );
+}
 
 function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
   const { y } = useWindowScroll();
@@ -139,16 +150,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
-        <div className="flex gap-12">
-          <nav className="flex gap-8">
-            {/* Top level menu items */}
-            {(menu?.items || []).map((item) => (
-              <Link key={item.id} to={item.to} target={item.target}>
-                {item.title}
-              </Link>
-            ))}
-          </nav>
-        </div>
+        {isHome && <HeaderLinks />}
         <div className="flex items-center gap-1">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
