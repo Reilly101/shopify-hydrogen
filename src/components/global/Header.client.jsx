@@ -20,7 +20,7 @@ import { useDrawer } from './Drawer.client';
  */
 export function Header({ title, menu }) {
   const { pathname } = useUrl();
-
+  console.log(pathname);
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
 
@@ -123,10 +123,16 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
   );
 }
 function HeaderLinks({ menu }) {
+  const { pathname } = useUrl();
   return (
     <nav className="flex gap-8 header_background">
       {(menu?.items || []).map((item) => (
-        <Link key={item.id} to={item.to} target={item.target}>
+        <Link
+          className={pathname == item.to ? 'active_header_bg' : ''}
+          key={item.id}
+          to={item.to}
+          target={item.target}
+        >
           {item.title}
         </Link>
       ))}
@@ -150,7 +156,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
-        {isHome && <HeaderLinks menu={menu} />}
+        {isHome && <HeaderLinks menu={menu} pathname={pathname} />}
         <div className="flex items-center gap-1">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
@@ -180,9 +186,9 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           </button>
         </div>
       </header>
-      <div className="height-50 flex justify-between bg-red-400">
+      <div className="height-50 flex">
         <div className="flex">Shop By Categories</div>
-        {!isHome && <HeaderLinks />}
+        {!isHome && <HeaderLinks menu={menu} />}
       </div>
     </>
   );

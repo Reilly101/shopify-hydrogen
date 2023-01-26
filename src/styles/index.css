@@ -190,11 +190,11 @@ shop-pay-button {
 .header_background {
   background-color: var(--header-background);
 }
-.header_background > * > *:hover,
+.header_background > *:hover,
 .active_header_bg {
   background-color: var(--header-bgonhover);
 }
-.header_background > * > * {
+.header_background > * {
   padding-left: 10px;
   height: 50px;
 }
