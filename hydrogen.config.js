@@ -1,4 +1,4 @@
-import {defineConfig, CookieSessionStorage} from '@shopify/hydrogen/config';
+import { defineConfig, CookieSessionStorage } from '@shopify/hydrogen/config';
 
 export default defineConfig({
   shopify: {
@@ -26,3 +26,4 @@ export default defineConfig({
     maxAge: 60 * 60 * 24 * 30,
   }),
 });
+F

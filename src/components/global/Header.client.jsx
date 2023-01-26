@@ -24,7 +24,7 @@ export function Header({ title, menu }) {
   const localeMatch = /^\/([a-z]{2})(\/|$)/i.exec(pathname);
   const countryCode = localeMatch ? localeMatch[1] : undefined;
 
-  const isHome = pathname === `/${countryCode ? countryCode + '/' : ''}`;
+  const isHome = true; //pathname === `/${countryCode ? countryCode + '/' : ''}`;
 
   const {
     isOpen: isCartOpen,
@@ -57,20 +57,6 @@ export function Header({ title, menu }) {
         openMenu={openMenu}
       />
     </>
-  );
-}
-
-function NavigationLink({ menu, children }) {
-  return (
-    <nav className="flex gap-8">
-      {/* Top level menu items */}
-      {children}
-      {(menu?.items || []).map((item) => (
-        <Link key={item.id} to={item.to} target={item.target}>
-          {item.title}
-        </Link>
-      ))}
-    </nav>
   );
 }
 
@@ -153,8 +139,16 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
-        {isHome && <NavigationLink menu={menu} />}
-
+        <div className="flex gap-12">
+          <nav className="flex gap-8">
+            {/* Top level menu items */}
+            {(menu?.items || []).map((item) => (
+              <Link key={item.id} to={item.to} target={item.target}>
+                {item.title}
+              </Link>
+            ))}
+          </nav>
+        </div>
         <div className="flex items-center gap-1">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
@@ -184,12 +178,8 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           </button>
         </div>
       </header>
-      <div className="height-50 flex header_background items-center">
-        {!isHome && (
-          <NavigationLink menu={menu}>
-            <div className="margin-left-150">Shop By Departments</div>
-          </NavigationLink>
-        )}
+      <div className="height-50 flex justify-between bg-red-400">
+        <div className="flex">Shop By Categories</div>
         <div className="flex"></div>
       </div>
     </>
