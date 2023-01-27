@@ -156,7 +156,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
-        {isHome && <HeaderLinks menu={menu} pathname={pathname} />}
+        {isHome && <HeaderLinks menu={menu} />}
         <div className="flex items-center gap-1">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
