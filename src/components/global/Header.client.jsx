@@ -187,13 +187,14 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         </div>
       </header>
       <div className="height-50 flex">
+        <ShopByCategories />
         {!isHome && <HeaderLinks menu={menu} />}
       </div>
     </>
   );
 }
 
-function DropDown() {
+function ShopByCategories() {
   let [clicked, setClicked] = useState(false);
   return (
     <div
