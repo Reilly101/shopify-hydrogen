@@ -187,10 +187,21 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         </div>
       </header>
       <div className="height-50 flex">
-        <div className="flex">Shop By Categories</div>
         {!isHome && <HeaderLinks menu={menu} />}
       </div>
     </>
+  );
+}
+
+function DropDown() {
+  let [clicked, setClicked] = useState(false);
+  return (
+    <div
+      className={clicked ? 'active_header_bg' : ''}
+      onClick={() => setClicked(!clicked)}
+    >
+      Shop By Categories
+    </div>
   );
 }
 
