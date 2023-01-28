@@ -128,7 +128,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
 function HeaderLinks({ menu }) {
   const { pathname } = useUrl();
   return (
-    <nav className="flex justify-around gap-8 header_background">
+    <nav className="flex justify-around header_background">
       {(menu?.items || []).map((item) => (
         <Link
           className={pathname == item.to ? 'active_header_bg' : ''}
