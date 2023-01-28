@@ -187,7 +187,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           </button>
         </div>
       </header>
-      <div className="height-50 flex">
+      <div className="height-50 flex mx-[20px]">
         <ShopByCategories />
         {!isHome && <HeaderLinks menu={menu} />}
       </div>
