@@ -1,9 +1,14 @@
-import {Suspense} from 'react';
-import {useLocalization, useShopQuery, CacheLong, gql} from '@shopify/hydrogen';
+import { Suspense } from 'react';
+import {
+  useLocalization,
+  useShopQuery,
+  CacheLong,
+  gql,
+} from '@shopify/hydrogen';
 
-import {Header, Logo} from '~/components';
-import {Footer} from '~/components/index.server';
-import {parseMenu} from '~/lib/utils';
+import { Header, Logo } from '~/components';
+import { Footer } from '~/components/index.server';
+import { parseMenu } from '~/lib/utils';
 
 const HEADER_MENU_HANDLE = 'main-menu';
 const FOOTER_MENU_HANDLE = 'footer';
@@ -13,7 +18,7 @@ const SHOP_NAME_FALLBACK = 'Hydrogen';
 /**
  * A server component that defines a structure and organization of a page that can be used in different parts of the Hydrogen app
  */
-export function Layout({children}) {
+export function Layout({ children }) {
   return (
     <>
       <div className="flex flex-col min-h-screen">
@@ -37,87 +42,87 @@ export function Layout({children}) {
 }
 
 function HeaderWithMenu() {
-  const {shopName} = useLayoutQuery();
+  const { shopName } = useLayoutQuery();
   let headerMenu = {
-    "id": "gid://shopify/Menu/180186611768",
-    "items": [
+    id: 'gid://shopify/Menu/180186611768',
+    items: [
       {
-        "id": "Home",
-        "resourceId": null,
-        "tags": [],
-        "title": "Home",
-        "type": "",
-        "url": "",
-        "items": [],
-        "isExternal": false,
-        "target": "_self",
-        "to": "/"
-    },
-        
-        {
-            "id": "gid://shopify/MenuItem/413612507192",
-            "resourceId": null,
-            "tags": [],
-            "title": "Shop",
-            "type": "CATALOG",
-            "url": "https://hydrogen-preview.myshopify.com/collections/all",
-            "items": [],
-            "isExternal": false,
-            "target": "_self",
-            "to": "/products"
-        },
-        {
-            "id": "gid://shopify/MenuItem/430541078584",
-            "resourceId": "gid://shopify/Blog/83557253176",
-            "tags": [],
-            "title": "About",
-            "type": "BLOG",
-            "url": "https://hydrogen-preview.myshopify.com/blogs/journal",
-            "items": [],
-            "isExternal": false,
-            "target": "_self",
-            "to": "/journal"
-        },
-        {
-          "id": "gid://shopify/MenuItem/413612474424",
-          "resourceId": null,
-          "tags": [],
-          "title": "Blog",
-          "type": "COLLECTIONS",
-          "url": "https://hydrogen-preview.myshopify.com/collections",
-          "items": [],
-          "isExternal": false,
-          "target": "_self",
-          "to": "/collections"
+        id: 'Home',
+        resourceId: null,
+        tags: [],
+        title: 'Home',
+        type: '',
+        url: '',
+        items: [],
+        isExternal: false,
+        target: '_self',
+        to: '/',
+      },
+
+      {
+        id: 'Shop',
+        resourceId: null,
+        tags: [],
+        title: 'Shop',
+        type: 'CATALOG',
+        url: 'https://hydrogen-preview.myshopify.com/collections/all',
+        items: [],
+        isExternal: false,
+        target: '_self',
+        to: '/products',
       },
       {
-        "id": "gid://shopify/MenuItem/413612474424",
-        "resourceId": null,
-        "tags": [],
-        "title": "Contact",
-        "type": "COLLECTIONS",
-        "url": "https://hydrogen-preview.myshopify.com/collections",
-        "items": [],
-        "isExternal": false,
-        "target": "_self",
-        "to": "/contact"
-    }
-    ]
-}
-  return <Header title={<Logo/>} menu={headerMenu} />;
+        id: 'About',
+        // resourceId: 'gid://shopify/Blog/83557253176',
+        tags: [],
+        title: 'About',
+        type: 'BLOG',
+        url: 'https://hydrogen-preview.myshopify.com/blogs/journal',
+        items: [],
+        isExternal: false,
+        target: '_self',
+        to: '/journal',
+      },
+      {
+        id: 'Blog',
+        resourceId: null,
+        tags: [],
+        title: 'Blog',
+        type: 'COLLECTIONS',
+        url: 'https://hydrogen-preview.myshopify.com/collections',
+        items: [],
+        isExternal: false,
+        target: '_self',
+        to: '/collections',
+      },
+      {
+        id: 'Contact',
+        resourceId: null,
+        tags: [],
+        title: 'Contact',
+        type: 'COLLECTIONS',
+        url: 'https://hydrogen-preview.myshopify.com/collections',
+        items: [],
+        isExternal: false,
+        target: '_self',
+        to: '/contact',
+      },
+    ],
+  };
+  return <Header title={<Logo />} menu={headerMenu} />;
 }
 
 function FooterWithMenu() {
-  const {footerMenu} = useLayoutQuery();
+  const { footerMenu } = useLayoutQuery();
   return <Footer menu={footerMenu} />;
 }
 
 function useLayoutQuery() {
   const {
-    language: {isoCode: languageCode},
+    language: { isoCode: languageCode },
   } = useLocalization();
 
-  const {data} = useShopQuery({
+  const { data } = useShopQuery({
     query: SHOP_QUERY,
     variables: {
       language: languageCode,
@@ -138,7 +143,7 @@ function useLayoutQuery() {
           - /blog/news/blog-post -> /news/blog-post
           - /collections/all -> /products
       */
-  const customPrefixes = {BLOG: '', CATALOG: 'products'};
+  const customPrefixes = { BLOG: '', CATALOG: 'products' };
 
   const headerMenu = data?.headerMenu
     ? parseMenu(data.headerMenu, customPrefixes)
@@ -148,7 +153,7 @@ function useLayoutQuery() {
     ? parseMenu(data.footerMenu, customPrefixes)
     : undefined;
 
-  return {footerMenu, headerMenu, shopName};
+  return { footerMenu, headerMenu, shopName };
 }
 
 const SHOP_QUERY = gql`
