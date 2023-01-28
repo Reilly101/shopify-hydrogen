@@ -190,7 +190,7 @@ shop-pay-button {
 .header_background {
   background-color: var(--header-background);
 }
-.header_background > *:hover,
+nav > *:hover,
 .active_header_bg {
   background-color: var(--header-bgonhover);
 }
