@@ -201,7 +201,10 @@ function ShopByCategories() {
   let [clicked, setClicked] = useState(false);
   return (
     <div
-      className={clsx(clicked ? 'active_header_bg' : '', 'mx-[100px]')}
+      className={clsx(
+        clicked ? 'active_header_bg' : '',
+        'mx-[100px] justify-around'
+      )}
       onClick={() => setClicked(!clicked)}
     >
       Shop By Categories
