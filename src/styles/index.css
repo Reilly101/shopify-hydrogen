@@ -199,7 +199,7 @@ shop-pay-button {
   height: 50px;
 }
 
-.nav > * {
+nav > * {
   display: flex;
   align-items: center;
 }
