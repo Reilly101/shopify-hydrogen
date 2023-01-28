@@ -1,6 +1,7 @@
 import { Link, useUrl, useCart } from '@shopify/hydrogen';
 import { useWindowScroll } from 'react-use';
 import { useState } from 'react';
+import { clsx } from 'clsx';
 
 import {
   Heading,
