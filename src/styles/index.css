@@ -202,4 +202,5 @@ shop-pay-button {
 nav > * {
   display: flex;
   align-items: center;
+  margin: 15px;
 }
