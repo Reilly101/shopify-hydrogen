@@ -187,7 +187,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           </button>
         </div>
       </header>
-      <div className="height-50 flex mx-[100px]">
+      <div className="height-50 flex">
         <ShopByCategories />
         {!isHome && <HeaderLinks menu={menu} />}
       </div>
@@ -199,7 +199,7 @@ function ShopByCategories() {
   let [clicked, setClicked] = useState(false);
   return (
     <div
-      className={clicked ? 'active_header_bg' : ''}
+      className={(clsx(clicked ? 'active_header_bg' : ''), 'mx-[100px]')}
       onClick={() => setClicked(!clicked)}
     >
       Shop By Categories
