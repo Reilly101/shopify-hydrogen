@@ -203,7 +203,7 @@ function ShopByCategories() {
     <div
       className={clsx(
         clicked ? 'active_header_bg' : '',
-        'mx-[100px] justify-around'
+        'mx-[100px] flex justify-center'
       )}
       onClick={() => setClicked(!clicked)}
     >
