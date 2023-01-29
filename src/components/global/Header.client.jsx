@@ -175,7 +175,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
               className={
                 isHome
                   ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                  : 'focus:border-primary/20'
+                  : 'focus:border-primary/20 w-full'
               }
               type="search"
               variant="minisearch"
