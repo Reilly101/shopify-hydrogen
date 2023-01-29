@@ -169,7 +169,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <div className="flex items-center gap-1 w-full">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
-            className="flex items-center gap-2"
+            className="flex items-center gap-2 w-full"
           >
             <Input
               className={
