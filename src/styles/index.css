@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
 
 /* Tokens */
 :root {
@@ -194,10 +195,10 @@ nav > *:hover,
 .active_header_bg {
   background-color: var(--header-bgonhover);
 }
-.header_background > * {
+/* .header_background > * {
   padding-left: 10px;
   height: 50px;
-}
+} */
 
 nav > a {
   display: flex;
@@ -207,4 +208,13 @@ nav > a {
 }
 nav > link {
   width: 0;
+}
+
+.fontJost {
+  font-family: 'Jost';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 29px;
+  text-align: center;
 }

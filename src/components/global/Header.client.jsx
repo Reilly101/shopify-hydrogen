@@ -133,7 +133,10 @@ function HeaderLinks({ menu }) {
         <Link
           className={clsx(
             pathname == item.to && 'active_header_bg',
-            'px-[15px]'
+            'px-[25px]',
+            'h-[50px]',
+            'text-white',
+            'fontJost'
           )}
           key={item.id}
           to={item.to}
@@ -206,7 +209,8 @@ function ShopByCategories() {
     <div
       className={clsx(
         clicked ? 'active_header_bg' : '',
-        'px-[100px] flex items-center'
+        'px-[100px] flex items-center',
+        'fontJost'
       )}
       onClick={() => setClicked(!clicked)}
     >
