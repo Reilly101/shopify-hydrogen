@@ -8,7 +8,7 @@ import {
   IconAccount,
   IconBag,
   IconMenu,
-  IconSearch,
+  // IconSearch,
   Input,
   Logo,
 } from '~/components';
@@ -88,7 +88,8 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
           className="items-center gap-2 sm:flex"
         >
           <button type="submit" className={styles.button}>
-            <IconSearch />
+            Search
+            {/* <IconSearch /> */}
           </button>
           <Input
             className={
