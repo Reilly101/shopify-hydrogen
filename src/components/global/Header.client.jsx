@@ -94,7 +94,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
             className={
               isHome
                 ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20'
+                : 'focus:border-primary/20 w-full'
             }
             type="search"
             variant="minisearch"
@@ -210,7 +210,8 @@ function ShopByCategories() {
       className={clsx(
         clicked ? 'active_header_bg' : '',
         'px-[100px] flex items-center',
-        'fontJost'
+        'fontJost',
+        'text-white'
       )}
       onClick={() => setClicked(!clicked)}
     >
