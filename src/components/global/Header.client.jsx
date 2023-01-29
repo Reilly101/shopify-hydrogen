@@ -172,11 +172,12 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
             className="flex items-center gap-2 w-full"
           >
             <Input
-              className={
+              className={clsx(
                 isHome
                   ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                  : 'focus:border-primary/20 w-full'
-              }
+                  : 'focus:border-primary/20 w-[50%] m-auto',
+                'rounded-[66px]'
+              )}
               type="search"
               variant="minisearch"
               placeholder="Search"
