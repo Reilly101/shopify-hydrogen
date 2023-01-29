@@ -166,7 +166,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           {title}
         </Link>
         {isHome && <HeaderLinks menu={menu} />}
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 w-100">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
             className="flex items-center gap-2"
@@ -175,7 +175,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
               className={
                 isHome
                   ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                  : 'focus:border-primary/20 w-100'
+                  : 'focus:border-primary/20 w-full'
               }
               type="search"
               variant="minisearch"
