@@ -8,7 +8,7 @@ import {
   IconAccount,
   IconBag,
   IconMenu,
-  // IconSearch,
+  IconSearch,
   Input,
   Logo,
 } from '~/components';
@@ -177,7 +177,8 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
                 isHome
                   ? 'focus:border-contrast/20 dark:focus:border-primary/20'
                   : 'focus:border-primary/20 w-[50%] m-auto',
-                'rounded-[66px]'
+                'rounded-[66px]',
+                'pr-[20px]'
               )}
               type="search"
               variant="minisearch"
@@ -185,7 +186,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
               name="q"
             />
             <button type="submit" className={styles.button}>
-              <IconSearch />
+              {/* <IconSearch /> */}
             </button>
           </form>
           <Link to={'/account'} className={styles.button}>
