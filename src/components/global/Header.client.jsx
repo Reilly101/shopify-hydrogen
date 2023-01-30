@@ -163,9 +163,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           >
             <Input
               className={clsx(
-                isHome
-                  ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                  : 'focus:border-primary/20 w-[50%] m-auto',
+                'focus:border-primary/20 w-[50%] m-auto',
                 'rounded-[66px]',
                 'pr-[20px]'
               )}
