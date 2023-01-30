@@ -68,15 +68,8 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
 
   const styles = {
     // button: 'relative flex items-center justify-center w-8 h-8',
-    container: `${
-      // isHome
-        // ? 'bg-primary/80 dark:bg-contrast/60 text-contrast dark:text-primary shadow-darkHeader'
-        : 'bg-contrast/80 text-primary'
-    } ${
-      y > 50  {'shadow-lightHeader '}
-    `flex lg hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`
+    container: `bg-contrast/80 text-primary flex lg hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`,
   };
-
   return (
     <header role="banner" className={styles.container}>
       <div className="flex items-center justify-start w-full gap-4">
