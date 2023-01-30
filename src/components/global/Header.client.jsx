@@ -92,11 +92,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
             {/* <IconSearch /> */}
           </button>
           <Input
-            className={
-              isHome
-                ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                : 'focus:border-primary/20 w-full'
-            }
+            className={'focus:border-primary/20 w-full'}
             type="search"
             variant="minisearch"
             placeholder="Search"
