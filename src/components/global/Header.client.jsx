@@ -166,11 +166,12 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
               className={clsx(
                 'focus:border-primary/20 w-[50%] m-auto',
                 'rounded-[66px]',
-                'pr-[20px]'
+                'pr-[50px]',
+                'placeholder:text-left pr-[10px]'
               )}
               type="search"
               variant="minisearch"
-              placeholder="Search"
+              placeholder="Enter your keyword..."
               name="q"
             />
             <button type="submit" className={styles.button}>
