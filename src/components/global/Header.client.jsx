@@ -151,8 +151,8 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
   };
 
   return (
-    <div className={styles.container}>
-      <header role="banner">
+    <>
+      <header role="banner" className={styles.container}>
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
@@ -164,9 +164,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           >
             <Input
               className={clsx(
-                isHome
-                  ? 'focus:border-contrast/20 dark:focus:border-primary/20'
-                  : 'focus:border-primary/20 w-[50%] m-auto',
+                'focus:border-primary/20 w-[50%] m-auto',
                 'rounded-[66px]',
                 'pr-[20px]'
               )}
@@ -188,11 +186,11 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           </button>
         </div>
       </header>
-      <div className="height-50 flex width:full header_background ">
+      <div className="height-50 flex width:full header_background lg:flex hidden">
         <ShopByCategories />
         <HeaderLinks menu={menu} />
       </div>
-    </div>
+    </>
   );
 }
 
