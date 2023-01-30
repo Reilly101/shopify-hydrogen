@@ -68,8 +68,9 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
 
   const styles = {
     // button: 'relative flex items-center justify-center w-8 h-8',
-    container: `bg-contrast/80 text-primary flex lg hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`,
+    container: `bg-contrast/80 text-primary flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`,
   };
+
   return (
     <header role="banner" className={styles.container}>
       <div className="flex items-center justify-start w-full gap-4">
@@ -163,7 +164,9 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           >
             <Input
               className={clsx(
-                'focus:border-primary/20 w-[50%] m-auto',
+                isHome
+                  ? 'focus:border-contrast/20 dark:focus:border-primary/20'
+                  : 'focus:border-primary/20 w-[50%] m-auto',
                 'rounded-[66px]',
                 'pr-[20px]'
               )}
