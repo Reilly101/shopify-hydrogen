@@ -109,7 +109,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
         className="flex items-center self-stretch leading-[3rem] md:leading-[4rem] justify-center flex-grow w-full h-full"
         to="/"
       >
-        <Heading className="font-bold text-center" as={isHome ? 'h1' : 'h2'}>
+        <Heading className="font-bold text-center" as={'h2'}>
           {title}
         </Heading>
       </Link>
@@ -120,7 +120,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
         </Link>
         <button onClick={openCart} className={styles.button}>
           <IconBag />
-          <CartBadge dark={isHome} />
+          <CartBadge />
         </button>
       </div>
     </header>
@@ -166,7 +166,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
-        {isHome && <HeaderLinks menu={menu} />}
+        {/* {<HeaderLinks menu={menu} />} */}
         <div className="flex items-center gap-1 w-full">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
@@ -200,7 +200,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
       </header>
       <div className="height-50 flex width:full header_background ">
         <ShopByCategories />
-        {!isHome && <HeaderLinks menu={menu} />}
+        <HeaderLinks menu={menu} />
       </div>
     </>
   );
