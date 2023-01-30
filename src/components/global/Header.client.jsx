@@ -151,8 +151,8 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
   };
 
   return (
-    <>
-      <header role="banner" className={styles.container}>
+    <div className={styles.container}>
+      <header role="banner">
         <Link className={`font-bold`} to="/">
           {title}
         </Link>
@@ -192,7 +192,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <ShopByCategories />
         <HeaderLinks menu={menu} />
       </div>
-    </>
+    </div>
   );
 }
 
