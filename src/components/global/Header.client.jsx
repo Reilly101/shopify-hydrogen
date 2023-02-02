@@ -67,7 +67,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
   const { y } = useWindowScroll();
 
   const styles = {
-    // button: 'relative flex items-center justify-center w-8 h-8',
+    button: 'relative flex items-center justify-center w-8 h-8',
     container: `bg-contrast/80 text-primary flex lg:hidden items-center h-nav sticky backdrop-blur-lg z-40 top-0 justify-between w-full leading-none gap-4 px-4 md:px-8`,
   };
 
