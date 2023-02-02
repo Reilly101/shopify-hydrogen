@@ -81,7 +81,7 @@ function MobileHeader({ countryCode, title, isHome, openCart, openMenu }) {
           action={`/${countryCode ? countryCode + '/' : ''}search`}
           className="items-center gap-2 sm:flex"
         >
-          <button type="submit" className={styles.button}>
+          <button type="submit">
             Search
             {/* <IconSearch /> */}
           </button>
@@ -160,22 +160,22 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
         <div className="flex items-center gap-1 w-full">
           <form
             action={`/${countryCode ? countryCode + '/' : ''}search`}
-            className="flex items-center gap-2 w-full"
+            className="flex items-center gap-2 justify-center w-full"
           >
             <Input
               className={clsx(
-                'focus:border-primary/20 w-[50%] m-auto',
+                'focus:border-primary/20 w-[50%]',
                 'rounded-[66px]',
-                'pr-[50px]',
-                'placeholder:text-left pr-[10px]'
+                `pr-600`,
+                'placeholder:text-left placeholder:pl-[10px]'
               )}
               type="search"
               variant="minisearch"
               placeholder="Enter your keyword..."
               name="q"
             />
-            <button type="submit" className={styles.button}>
-              {/* <IconSearch /> */}
+            <button type="submit" className="ml-[-80px]">
+              Search
             </button>
           </form>
           <Link to={'/account'} className={styles.button}>

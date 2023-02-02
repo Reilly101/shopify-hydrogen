@@ -218,3 +218,6 @@ nav > link {
   line-height: 29px;
   text-align: center;
 }
+.pr-600 {
+  padding-right: 600px;
+}
