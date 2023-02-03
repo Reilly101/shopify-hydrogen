@@ -151,7 +151,7 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
   };
 
   return (
-    <>
+    <div className="sticky top-0 z-50 bg-white">
       <header role="banner" className={styles.container}>
         <Link className={`font-bold`} to="/">
           {title}
@@ -187,11 +187,14 @@ function DesktopHeader({ countryCode, isHome, menu, openCart, title }) {
           </button>
         </div>
       </header>
-      <div className="height-50 flex width:full header_background lg:flex hidden">
-        <ShopByCategories />
-        <HeaderLinks menu={menu} />
+      <div className="height-50 flex width:full header_background lg:flex hidden justify-between">
+        <div className="flex">
+          <ShopByCategories />
+          <HeaderLinks menu={menu} />
+        </div>
+        <div className="hotline">Hotline: (424) 499 7878</div>
       </div>
-    </>
+    </div>
   );
 }
 
