@@ -3,8 +3,8 @@ import { Link, flattenConnection } from '@shopify/hydrogen';
 
 import { Button, Grid, ProductCard } from '~/components';
 import { getImageLoadingPriority } from '~/lib/const';
-import Gridel from '../assets/Gridel';
-import List from '../assets/List';
+import Gridel from '../../assets/Gridel';
+import List from '../../assets/List';
 
 export function ProductGrid({ url, collection }) {
   const nextButtonRef = useRef(null);
@@ -79,10 +79,10 @@ export function ProductGrid({ url, collection }) {
 
   return (
     <>
-      {/* <div className=" flex justify-end gap-[20px] "> */}
-      <Gridel color={'black'} />
-      <List color={'black'} />
-      {/* </div> */}
+      <div className=" flex justify-end gap-[20px] ">
+        <Gridel color={activeView == 'grid' ? '#f96030' : 'black'} />
+        <List color={activeView == 'grid' ? '#f96030' : 'black'} />
+      </div>
       <Grid layout="products">
         {products.map((product, i) => (
           <ProductCard
