@@ -3,8 +3,8 @@ import { Link, flattenConnection } from '@shopify/hydrogen';
 
 import { Button, Grid, ProductCard } from '~/components';
 import { getImageLoadingPriority } from '~/lib/const';
-import Gridel from '../../assets/Gridel';
-import List from '../../assets/List';
+import Gridel from '../assets/Gridel.jsx';
+import List from '../assets/List.jsx';
 
 export function ProductGrid({ url, collection }) {
   const nextButtonRef = useRef(null);
