@@ -1,11 +1,12 @@
-export default function List({ color }) {
+export default function List({ color, click }) {
   return (
     <svg
-    width="25"
-    height="26"
-    viewBox="0 0 25 26"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
+      width="25"
+      height="26"
+      viewBox="0 0 25 26"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      onClick={click}
     >
       <path
         d="M0.600002 0.5H6.60002C6.65526 0.5 6.70003 0.544762 6.70003 0.600002V6.60002C6.70003 6.65526 6.65526 6.70003 6.60002 6.70003H0.600002C0.544762 6.70003 0.5 6.65526 0.5 6.60002V0.600002C0.5 0.544762 0.544762 0.5 0.600002 0.5Z"
