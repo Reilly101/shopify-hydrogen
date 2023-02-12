@@ -1,4 +1,4 @@
-export default function Grid({ color }) {
+export default function Gridel({ color }) {
   return (
     <svg
       width="25"
