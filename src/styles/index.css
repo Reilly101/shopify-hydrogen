@@ -221,3 +221,7 @@ nav > link {
 .pr-600 {
   padding-right: 600px;
 }
+
+.active_list_view path {
+  stroke: #f96030;
+}

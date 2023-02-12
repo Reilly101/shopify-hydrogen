@@ -3,8 +3,8 @@ import { Link, flattenConnection } from '@shopify/hydrogen';
 
 import { Button, Grid, ProductCard } from '~/components';
 import { getImageLoadingPriority } from '~/lib/const';
-import Grid_hover from '~/assets/Grid_hover.svg';
-import List from '~/assets/List.svg';
+import Gridel from '~/assets/Grid.js';
+import List from '~/assets/List.js';
 
 export function ProductGrid({ url, collection }) {
   const nextButtonRef = useRef(null);
@@ -15,6 +15,7 @@ export function ProductGrid({ url, collection }) {
   const [nextPage, setNextPage] = useState(hasNextPage);
   const [pending, setPending] = useState(false);
   const haveProducts = initialProducts.length > 0;
+  const [activeView, setActiveView] = useState('grid');
 
   const fetchProducts = useCallback(async () => {
     setPending(true);
@@ -78,9 +79,9 @@ export function ProductGrid({ url, collection }) {
 
   return (
     <>
-      <div className=" flex justify-end gap=[20px]">
-        <img src={Grid_hover} alt="grid hover" />
-        <img src={List} alt="List" />
+      <div className=" flex justify-end gap-[20px] ">
+        <Gridel color={activeView == 'grid' ? '#f96030' : 'black'} />
+        <List color={activeView == 'list' ? '#f96030' : 'black'} />
       </div>
       <Grid layout="products">
         {products.map((product, i) => (
