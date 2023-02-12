@@ -1,13 +1,15 @@
-import {useState, useRef, useEffect, useCallback} from 'react';
-import {Link, flattenConnection} from '@shopify/hydrogen';
+import { useState, useRef, useEffect, useCallback } from 'react';
+import { Link, flattenConnection } from '@shopify/hydrogen';
 
-import {Button, Grid, ProductCard} from '~/components';
-import {getImageLoadingPriority} from '~/lib/const';
+import { Button, Grid, ProductCard } from '~/components';
+import { getImageLoadingPriority } from '~/lib/const';
+import Grid_hover from '~/assets/Grid_hover.svg';
+import List from '~/assets/List.svg';
 
-export function ProductGrid({url, collection}) {
+export function ProductGrid({ url, collection }) {
   const nextButtonRef = useRef(null);
   const initialProducts = collection?.products?.nodes || [];
-  const {hasNextPage, endCursor} = collection?.products?.pageInfo ?? {};
+  const { hasNextPage, endCursor } = collection?.products?.pageInfo ?? {};
   const [products, setProducts] = useState(initialProducts);
   const [cursor, setCursor] = useState(endCursor ?? '');
   const [nextPage, setNextPage] = useState(hasNextPage);
@@ -22,15 +24,15 @@ export function ProductGrid({url, collection}) {
     const response = await fetch(postUrl, {
       method: 'POST',
     });
-    const {data} = await response.json();
+    const { data } = await response.json();
 
     // ProductGrid can paginate collection, products and search routes
     // @ts-ignore TODO: Fix types
     const newProducts = flattenConnection(
-      data?.collection?.products || data?.products || [],
+      data?.collection?.products || data?.products || []
     );
-    const {endCursor, hasNextPage} = data?.collection?.products?.pageInfo ||
-      data?.products?.pageInfo || {endCursor: '', hasNextPage: false};
+    const { endCursor, hasNextPage } = data?.collection?.products?.pageInfo ||
+      data?.products?.pageInfo || { endCursor: '', hasNextPage: false };
 
     setProducts([...products, ...newProducts]);
     setCursor(endCursor);
@@ -46,7 +48,7 @@ export function ProductGrid({url, collection}) {
         }
       });
     },
-    [fetchProducts],
+    [fetchProducts]
   );
 
   useEffect(() => {
@@ -76,6 +78,10 @@ export function ProductGrid({url, collection}) {
 
   return (
     <>
+      <div className=" flex justify-end gap=[20px]">
+        <img src={Grid_hover} alt="grid hover" />
+        <img src={List} alt="List" />
+      </div>
       <Grid layout="products">
         {products.map((product, i) => (
           <ProductCard
