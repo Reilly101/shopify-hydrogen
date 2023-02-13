@@ -37,7 +37,7 @@ export function ProductCard({
     cardLabel = 'New';
   }
 
-  const styles = clsx('grid gap-6', className);
+  const styles = clsx(activeView == 'list' ? 'flex' : 'grid gap-6');
 
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
