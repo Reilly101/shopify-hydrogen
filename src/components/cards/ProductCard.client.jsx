@@ -11,7 +11,14 @@ import { Text } from '~/components';
 import { isDiscounted, isNewArrival } from '~/lib/utils';
 import { getProductPlaceholder } from '~/lib/placeholders';
 
-export function ProductCard({ product, label, className, loading, onClick }) {
+export function ProductCard({
+  product,
+  label,
+  className,
+  loading,
+  onClick,
+  activeView,
+}) {
   let cardLabel;
 
   const cardData = product?.variants ? product : getProductPlaceholder();
@@ -30,12 +37,17 @@ export function ProductCard({ product, label, className, loading, onClick }) {
     cardLabel = 'New';
   }
 
-  const styles = clsx('grid gap-6');
+  const styles = clsx('grid gap-6', className);
 
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className={'card-image aspect-[4/5] bg-primary/5 ' + className}>
+        <div
+          className={clsx(
+            'card-image aspect-[4/5] bg-primary/5',
+            activeView == 'list' ? 'h-8' : ' '
+          )}
+        >
           <Text
             as="label"
             size="fine"
@@ -61,7 +73,12 @@ export function ProductCard({ product, label, className, loading, onClick }) {
             />
           )}
         </div>
-        <div className="grid gap-1 flex">
+        <div
+          className={clsx(
+            ' flex',
+            activeView == 'list' ? 'grid gap-1' : 'flex'
+          )}
+        >
           <Text
             className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
             as="h3"
