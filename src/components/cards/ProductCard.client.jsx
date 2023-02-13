@@ -80,7 +80,7 @@ export function ProductCard({
           >
             {product.title}
           </Text>
-          <div className="flex gap-4">
+          <div className={clsx(activeView == 'list' ? 'flex' : 'grid gap-1')}>
             <Text className="flex gap-4">
               <Money withoutTrailingZeros data={price} />
               {isDiscounted(price, compareAtPrice) && (
