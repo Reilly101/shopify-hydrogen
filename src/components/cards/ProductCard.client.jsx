@@ -35,7 +35,7 @@ export function ProductCard({ product, label, className, loading, onClick }) {
   return (
     <Link onClick={onClick} to={`/products/${product.handle}`}>
       <div className={styles}>
-        <div className={"card-image aspect-[4/5] bg-primary/5 " +className}>
+        <div className={'card-image aspect-[4/5] bg-primary/5 ' + className}>
           <Text
             as="label"
             size="fine"
@@ -61,7 +61,7 @@ export function ProductCard({ product, label, className, loading, onClick }) {
             />
           )}
         </div>
-        <div className="grid gap-1">
+        <div className="grid gap-1 flex">
           <Text
             className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
             as="h3"
