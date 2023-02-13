@@ -95,6 +95,7 @@ export function ProductGrid({ url, collection }) {
             key={product.id}
             product={product}
             loading={getImageLoadingPriority(i)}
+            activeView={activeView}
           />
         ))}
       </Grid>
