@@ -79,16 +79,20 @@ export function ProductGrid({ url, collection }) {
 
   return (
     <>
-      <div className=" flex justify-end gap-[20px] ">
-        <div className="mr-[51px]">Showing all {products.length} results</div>
-        <Gridel
-          click={() => setActiveView('grid')}
-          color={activeView == 'grid' ? '#f96030' : 'black'}
-        />
-        <List
-          click={() => setActiveView('list')}
-          color={activeView == 'list' ? '#f96030' : 'black'}
-        />
+      <div className="flex justify-between">
+        <div>Best Selling</div>
+        <div className=" flex justify-end gap-[20px] ">
+          <div className="mr-[51px]">Showing all {products.length} results</div>
+
+          <Gridel
+            click={() => setActiveView('grid')}
+            color={activeView == 'grid' ? '#f96030' : 'black'}
+          />
+          <List
+            click={() => setActiveView('list')}
+            color={activeView == 'list' ? '#f96030' : 'black'}
+          />
+        </div>
       </div>
       <Grid layout={activeView == 'list' ? 'list' : 'products'}>
         {products.map((product, i) => (
