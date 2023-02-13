@@ -16,6 +16,7 @@ export function Grid({
     products: `grid-cols-2 ${items >= 3 && 'md:grid-cols-3'} ${
       items >= 4 && 'lg:grid-cols-4'
     }`,
+    list: 'grid-cols-1',
     auto: 'auto-cols-auto',
     blog: `grid-cols-2 pt-24`,
   };

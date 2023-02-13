@@ -89,7 +89,7 @@ export function ProductGrid({ url, collection }) {
           color={activeView == 'list' ? '#f96030' : 'black'}
         />
       </div>
-      <Grid layout="products">
+      <Grid layout={activeView == 'list' ? 'list' : 'products'}>
         {products.map((product, i) => (
           <ProductCard
             key={product.id}
