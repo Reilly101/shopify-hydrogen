@@ -73,14 +73,14 @@ export function ProductCard({
             />
           )}
         </div>
-        <div className={clsx(activeView == 'list' ? 'flex' : 'grid gap-1')}>
+        <div className={clsx(activeView == 'list' ? 'grid' : 'grid gap-1')}>
           <Text
             className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
             as="h3"
           >
             {product.title}
           </Text>
-          <div className={clsx(activeView == 'list' ? 'flex' : 'grid gap-1')}>
+          <div className="grid gap-6">
             <Text className="flex gap-4">
               <Money withoutTrailingZeros data={price} />
               {isDiscounted(price, compareAtPrice) && (
