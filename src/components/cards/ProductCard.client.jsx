@@ -45,7 +45,7 @@ export function ProductCard({
         <div
           className={clsx(
             'card-image aspect-[4/5] bg-primary/5',
-            activeView == 'list' ? 'h-8' : ' '
+            activeView == 'list' ? 'h-32' : ' '
           )}
         >
           <Text
@@ -73,7 +73,7 @@ export function ProductCard({
             />
           )}
         </div>
-        <div className={clsx(activeView == 'list' ? 'grid' : 'grid gap-1')}>
+        <div className={clsx(activeView == 'list' ? 'flex' : 'grid', 'gap-1')}>
           <Text
             className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
             as="h3"
