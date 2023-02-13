@@ -80,6 +80,7 @@ export function ProductGrid({ url, collection }) {
   return (
     <>
       <div className=" flex justify-end gap-[20px] ">
+        <div className="mr-[51px]">Showing all {products.length} results</div>
         <Gridel
           click={() => setActiveView('grid')}
           color={activeView == 'grid' ? '#f96030' : 'black'}
