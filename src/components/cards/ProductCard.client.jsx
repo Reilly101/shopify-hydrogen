@@ -73,12 +73,7 @@ export function ProductCard({
             />
           )}
         </div>
-        <div
-          className={clsx(
-            ' flex',
-            activeView == 'list' ? 'grid gap-1' : 'flex'
-          )}
-        >
+        <div className={clsx(activeView == 'list' ? 'grid gap-1' : 'flex')}>
           <Text
             className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
             as="h3"
