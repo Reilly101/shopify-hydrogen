@@ -7,11 +7,11 @@ import {
   useMoney,
 } from '@shopify/hydrogen';
 
-import {Text} from '~/components';
-import {isDiscounted, isNewArrival} from '~/lib/utils';
-import {getProductPlaceholder} from '~/lib/placeholders';
+import { Text } from '~/components';
+import { isDiscounted, isNewArrival } from '~/lib/utils';
+import { getProductPlaceholder } from '~/lib/placeholders';
 
-export function ProductCard({product, label, className, loading, onClick}) {
+export function ProductCard({ product, label, className, loading, onClick }) {
   let cardLabel;
 
   const cardData = product?.variants ? product : getProductPlaceholder();
@@ -85,8 +85,8 @@ export function ProductCard({product, label, className, loading, onClick}) {
   );
 }
 
-function CompareAtPrice({data, className}) {
-  const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
+function CompareAtPrice({ data, className }) {
+  const { currencyNarrowSymbol, withoutTrailingZerosAndCurrency } =
     useMoney(data);
 
   const styles = clsx('strike', className);
