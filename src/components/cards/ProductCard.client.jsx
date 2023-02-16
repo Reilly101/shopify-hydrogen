@@ -10,9 +10,6 @@ import {
 import { Text } from '~/components';
 import { isDiscounted, isNewArrival } from '~/lib/utils';
 import { getProductPlaceholder } from '~/lib/placeholders';
-import { Button } from '../elements/Button';
-import { AddToCartButton } from '@shopify/hydrogen/components/AddToCartButton/AddToCartButton.client';
-import { ProductOptionsProvider } from '@shopify/hydrogen';
 
 export function ProductCard({
   product,
@@ -44,83 +41,67 @@ export function ProductCard({
     activeView == 'list' ? 'flex items-center' : 'grid',
     'gap-6'
   );
-  console.log(product);
+
   return (
-    <ProductOptionsProvider data={product}>
-      <Link onClick={onClick} to={`/products/${product.handle}`}>
-        <div className={styles}>
-          <div
-            className={clsx(
-              'card-image aspect-[4/5] bg-primary/5',
-              activeView == 'list' ? 'h-32' : ' '
-            )}
+    <Link onClick={onClick} to={`/products/${product.handle}`}>
+      <div className={styles}>
+        <div
+          className={clsx(
+            'card-image aspect-[4/5] bg-primary/5',
+            activeView == 'list' ? 'h-32' : ' '
+          )}
+        >
+          <Text
+            as="label"
+            size="fine"
+            className="absolute top-0 right-0 m-4 text-right text-notice"
           >
-            <Text
-              as="label"
-              size="fine"
-              className="absolute top-0 right-0 m-4 text-right text-notice"
-            >
-              {cardLabel}
-            </Text>
-            {image && (
-              <Image
-                className="aspect-[4/5] w-full object-cover fadeIn"
-                widths={[320]}
-                sizes="320px"
-                loaderOptions={{
-                  crop: 'center',
-                  scale: 2,
-                  width: 320,
-                  height: 400,
-                }}
-                // @ts-ignore Stock type has `src` as optional
-                data={image}
-                alt={image.altText || `Picture of ${product.title}`}
-                loading={loading}
-              />
-            )}
-          </div>
-          <div
-            className={clsx(
-              activeView == 'list' ? 'flex justify-between w-full' : 'grid',
-              'gap-1'
-            )}
+            {cardLabel}
+          </Text>
+          {image && (
+            <Image
+              className="aspect-[4/5] w-full object-cover fadeIn"
+              widths={[320]}
+              sizes="320px"
+              loaderOptions={{
+                crop: 'center',
+                scale: 2,
+                width: 320,
+                height: 400,
+              }}
+              // @ts-ignore Stock type has `src` as optional
+              data={image}
+              alt={image.altText || `Picture of ${product.title}`}
+              loading={loading}
+            />
+          )}
+        </div>
+        <div
+          className={clsx(
+            activeView == 'list' ? 'flex justify-between w-full' : 'grid',
+            'gap-1'
+          )}
+        >
+          <Text
+            className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
+            as="h3"
           >
-            <Text
-              className="w-full overflow-hidden whitespace-nowrap text-ellipsis "
-              as="h3"
-            >
-              {product.title}
+            {product.title}
+          </Text>
+          <div className="grid gap-6">
+            <Text className="flex gap-4">
+              <Money withoutTrailingZeros data={price} />
+              {isDiscounted(price, compareAtPrice) && (
+                <CompareAtPrice
+                  className={'opacity-50'}
+                  data={compareAtPrice}
+                />
+              )}
             </Text>
-            <div className="grid gap-6">
-              <Text className="flex gap-4">
-                <Money withoutTrailingZeros data={price} />
-                {isDiscounted(price, compareAtPrice) && (
-                  <CompareAtPrice
-                    className={'opacity-50'}
-                    data={compareAtPrice}
-                  />
-                )}
-              </Text>
-            </div>
-            <AddToCartButton
-              variantId={product.variants.node?.[0]?.id}
-              quantity={1}
-              accessibleAddingToCartLabel="Adding item to your cart"
-              // disabled={isOutOfStock}
-              type="button"
-            >
-              <Button
-                width="full"
-                // variant={isOutOfStock ? 'secondary' : 'primary'}
-                as="span"
-                text="ok"
-              ></Button>
-            </AddToCartButton>
           </div>
         </div>
-      </Link>
-    </ProductOptionsProvider>
+      </div>
+    </Link>
   );
 }
 

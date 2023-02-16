@@ -82,53 +82,9 @@ const ALL_PRODUCTS_QUERY = gql`
     $cursor: String
   ) @inContext(country: $country, language: $language) {
     products(first: $pageBy, after: $cursor) {
-      id
-      title
-      vendor
-      descriptionHtml
-      media(first: 7) {
-        nodes {
-          ...Media
-        }
+      nodes {
+        ...ProductCard
       }
-      productType
-      variants(first: 100) {
-        nodes {
-          id
-          availableForSale
-          selectedOptions {
-            name
-            value
-          }
-          image {
-            id
-            url
-            altText
-            width
-            height
-          }
-          priceV2 {
-            amount
-            currencyCode
-          }
-          compareAtPriceV2 {
-            amount
-            currencyCode
-          }
-          sku
-          title
-          unitPrice {
-            amount
-            currencyCode
-          }
-        }
-      }
-      seo {
-        description
-        title
-
-      }
-    }
       pageInfo {
         hasNextPage
         startCursor
