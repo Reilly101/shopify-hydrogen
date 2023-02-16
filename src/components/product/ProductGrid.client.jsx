@@ -52,19 +52,19 @@ export function ProductGrid({ url, collection }) {
     [fetchProducts]
   );
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(handleIntersect, {
-      rootMargin: '100%',
-    });
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(handleIntersect, {
+  //     rootMargin: '100%',
+  //   });
 
-    const nextButton = nextButtonRef.current;
+  //   const nextButton = nextButtonRef.current;
 
-    if (nextButton) observer.observe(nextButton);
+  //   if (nextButton) observer.observe(nextButton);
 
-    return () => {
-      if (nextButton) observer.unobserve(nextButton);
-    };
-  }, [nextButtonRef, cursor, handleIntersect]);
+  //   return () => {
+  //     if (nextButton) observer.unobserve(nextButton);
+  //   };
+  // }, [nextButtonRef, cursor, handleIntersect]);
 
   if (!haveProducts) {
     return (
